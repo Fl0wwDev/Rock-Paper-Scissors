@@ -1,39 +1,33 @@
-# Rock paper scissors
-# User vs Computer
 
-import random, time 
+#* Rock paper scissors
+#* User vs Computer
+
+import random
+
 
 def main():
 
-    L = ["rock","paper","scissors"] 
-    computer = random.choice(L)
-    user = input("À vous de jouer : ")
-    win = False
-
-    # User says rock 
-    if user.lower() == "rock" and computer.lower() == "scissors":
-        win = True
-
-    # User says paper
-    if user.lower() == "paper" and computer.lower() == "rock":
-        win = True
+    user = input("What's your choice? 'r' for rock, 'p' for paper, 's' for scissors\n")
+    computer = random.choice(['r','p','s'])
+    print(f"Computer chooses : {computer}")
     
-    #User says scissors
-    if user.lower() == "scissors" and computer.lower() == "paper":
-        win = True
-
-
-    time.sleep(1)
-    print(computer)
-    time.sleep(1)
+    if user == computer:
+        return 'Its a tie'
     
-    if win == True:
-        print("You win")
-    else: 
-        print("You lost")
+    if is_win(user, computer):
+        return 'You won!'
+
+    return 'You lost!'
+
+
+def is_win(user, computer):
+    
+    if (user == 'r' and computer == 's') or (user == 'p' and computer == 'r') \
+        or (user == 's' and computer == 'p'):
+        return True
 
 
 
 
 if __name__ == '__main__':
-    main()
+    print(main())
